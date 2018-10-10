@@ -3,7 +3,6 @@ from django.conf import settings
 from django.views import i18n
 from django.utils import safestring
 from django.utils.translation import ugettext_lazy as _, get_language
-from django.contrib.staticfiles.storage import staticfiles_storage
 
 try:
     from django import urls
@@ -47,8 +46,8 @@ class RecurrenceWidget(forms.Textarea):
 
     def get_media(self):
         js = [
-            staticfiles_storage.url('recurrence/js/recurrence.js'),
-            staticfiles_storage.url('recurrence/js/recurrence-widget.js'),
+            'recurrence/js/recurrence.js',
+            'recurrence/js/recurrence-widget.js',
         ]
         i18n_media = find_recurrence_i18n_js_catalog()
         if i18n_media:
@@ -57,7 +56,7 @@ class RecurrenceWidget(forms.Textarea):
         return forms.Media(
             js=js, css={
                 'all': (
-                    staticfiles_storage.url('recurrence/css/recurrence.css'),
+                    'recurrence/css/recurrence.css',
                 ),
             },
         )
