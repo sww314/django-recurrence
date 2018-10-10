@@ -984,6 +984,15 @@ var gettext = gettext || function(msgid) {
         return (typeof(value) == 'string') ? value : value[0];
     }
 };
+var pgettext = pgettext || function(msgid) {
+    var value = catalog[msgid];
+    if (typeof(value) == 'undefined') {
+        return msgid;
+    } else {
+        return (typeof(value) == 'string') ? value : value[0];
+    }
+};
+
 
 var interpolate = interpolate || function(fmt, obj, named) {
     if (named) {
